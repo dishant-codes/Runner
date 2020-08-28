@@ -5,6 +5,8 @@ running = true;
 audio = new Audio('sound3.mp3');
 audiogo = new Audio('game-over.mp3');
 
+alert("Welcome To The Runner Adventure : By Dishant Aarak");
+
 setTimeout(() => {
     audio.play();
 }, 500);
@@ -22,7 +24,7 @@ document.onkeydown = function (e) {
     else if (e.keyCode == 39) {
         boy = document.querySelector('.boy');
         boyX = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
-        boy.style.left = boyX + 400 + "px";
+        boy.style.left = boyX + 350 + "px";
     }
     else if (e.keyCode == 37) {
         boy = document.querySelector('.boy');
@@ -45,7 +47,8 @@ setInterval(() => {
 
     offsetX = Math.abs(bx - ox);
     offsetY = Math.abs(by - oy);
-    if (offsetX < 120) {
+    console.log(offsetX);
+    if (offsetX < 145) {
         gameOver.style.visibility = 'visible';
         obstacle.classList.remove('obstacleCroc');
         cross = false;
@@ -81,14 +84,8 @@ function updateScore(score) {
     }
 }
 
-
-// if (player != null) {
-//     document.getElementById("name").innerHTML =
-//     "Welcome " + player;
-//   }
 const reloadtButton = document.querySelector("#reload");
 // Reload everything:
 function reload() {
     reload = location.reload();
 }
-// Event listeners for reload
