@@ -5,8 +5,6 @@ running = true;
 audio = new Audio('sound3.mp3');
 audiogo = new Audio('game-over.mp3');
 
-var player = prompt("Please enter your name","");
-
 setTimeout(() => {
     audio.play();
 }, 500);
