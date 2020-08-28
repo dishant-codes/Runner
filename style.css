@@ -14,7 +14,7 @@ body{
     height: 100vh;
 }
 .boy{
-    background-image: url(boy.gif);
+    background-image: url(boygif.gif);
     background-repeat: no-repeat;
     background-size: cover;
     width: 300px;
