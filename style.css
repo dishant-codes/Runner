@@ -34,7 +34,7 @@ body{
 .gameOver{
     position: relative;
     top: 45px;
-    font-size: 53px;
+    font-size: 60px;
     text-align: center;
     visibility: hidden;
 }
