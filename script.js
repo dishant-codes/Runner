@@ -13,7 +13,7 @@ guide1 = document.querySelector('.guide-1');
 
 if(gameOvered==false){
     document.onkeydown = function (e) {
-        console.log("key code is: ", e.keyCode);
+       //console.log("key code is: ", e.keyCode);
         if (e.keyCode == 38) {
             if(gameOvered==false){
             running = true;
