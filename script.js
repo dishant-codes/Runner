@@ -1,102 +1,96 @@
 score = 0;
 cross = true;
-running = true;
-
+gameOvered = false;
+running = false;
 audio = new Audio('sound3.mp3');
 audiogo = new Audio('game-over.mp3');
+boy = document.querySelector('.boy');
+guy = document.querySelector('.guy');
+obstacle = document.querySelector('.obstacle');
+gameOver = document.querySelector('.gameOver');
+scoreCount = document.querySelector('.scoreCount');
+guide1 = document.querySelector('.guide-1');
 
-start = prompt("Enter your Name","your name");
- if(start){
-   
-    setTimeout(() => {
-        audio.play();
-    }, 1000);
-    
-    function loaded(){ 
-        document.onkeydown = function (e) {
-        console.log("key code is: ", e.keyCode)
-        
+if(gameOvered==false){
+    document.onkeydown = function (e) {
+        console.log("key code is: ", e.keyCode);
         if (e.keyCode == 38) {
-            
-            boy = document.querySelector('.boy');
-            boy.classList.add('animateBoy');
-            setTimeout(() => {
-                boy.classList.remove('animateBoy')
-            }, 700);
-        }
+            if(gameOvered==false){
+            running = true;
+            audio.play();
+            guide1.style.display= "none"
+            guy.style.display = "none";
+            boy.style.display = "block";
+        obstacle.classList.add('obstacleCroc');
+        boy.classList.add('animateBoy');
+        setTimeout(() => {
+            boy.classList.remove('animateBoy')
+        }, 700);
+    }}
         else if (e.keyCode == 39) {
-            boy = document.querySelector('.boy');
             boyX = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
             boy.style.left = boyX + 350 + "px";
         }
         else if (e.keyCode == 37) {
-            boy = document.querySelector('.boy');
             boyX = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
             boy.style.left = (boyX - 300) + "px";
         }
+        
     }
-    
     setInterval(() => {
-        boy = document.querySelector('.boy');
-        gameOver = document.querySelector('.gameOver');
-        obstacle = document.querySelector('.obstacle');
-        scoreCount = document.querySelector('.scoreCount');
         bx = parseInt(window.getComputedStyle(boy, null).getPropertyValue('left'));
-        by = parseInt(window.getComputedStyle(boy, null).getPropertyValue('top'));
-    
-    
+        by = parseInt(window.getComputedStyle(boy, null).getPropertyValue('top'));        
         ox = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('left'));
         oy = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue('top'));
-    
+        
         offsetX = Math.abs(bx - ox);
         offsetY = Math.abs(by - oy);
-        console.log(offsetX);
+        // console.log(offsetX);
         if (offsetX < 145) {
-            gameOver.style.visibility = 'visible';
-            obstacle.classList.remove('obstacleCroc');
             cross = false;
             running = false;
-            boy.style.display = "none";
-            guy = document.querySelector('.guy');
+            gameOvered = true;
+            gameOver.style.visibility = 'visible';
+            // obstacle.style.display = "";
             guy.style.display = "block";
+            boy.style.display = "none";
+            obstacle.classList.remove('obstacleCroc');
             audio.pause();
             audiogo.play();
             setTimeout(() => {
                 audiogo.pause();
-            }, 1000);
-            
+            }, 3000);
         }
-        else if (cross) {
-            score += 1;
-            updateScore(score);
-            cross = false;
-            setTimeout(() => {
-                cross = true;
-            }, 1000);
-    
-            setTimeout(() => {
-                aniDur = parseFloat(window.getComputedStyle(obstacle, null).getPropertyValue('animation-duration'));
-                newDur = aniDur - 0.1;
-                obstacle.style.animatioDuration = newDur + "s";
-            }, 500);
+        else if (cross&&running) {
+                score += 1;
+                updateScore(score);
+                cross = false;
+                setTimeout(() => {
+                    cross = true;
+                }, 1000);
+        
+                setTimeout(() => {
+                    aniDur = parseFloat(window.getComputedStyle(obstacle, null).getPropertyValue('animation-duration'));
+                    newDur = aniDur - 0.3;
+                    obstacle.style.animatioDuration = newDur + "s";
+                }, 500);
+                
+            }
             
+        }, 10);
+        
+        function updateScore(score) {
+            if(running) {
+                scoreCount.innerHTML = "Your Score: " + score;
+            }
         }
         
-    }, 10);
-    
-    function updateScore(score) {
-        if(running) {
-            scoreCount.innerHTML = "Your Score: " + score;
+       
+        // Reload everything:
+        function reload() {
+            reload = location.reload();
         }
+        
     }
     
-   
-    // Reload everything:
-    function reload() {
-        reload = location.reload();
-    }
-    
- }
-
-    }
     

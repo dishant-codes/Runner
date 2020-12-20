@@ -7,16 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="loaded()">
+<body>
     <div class="gamecontainer">
-        <div class="gameOver">Game Over <br/> <button class="reloadBtn" onClick="window.location.reload();">Play Again</button></div>
+        <div class="guide-1">To Start press 🔼 key</div>
+        <div class="gameOver">Game Over <br/> <button class="play-again" onclick="reload()"> Play Again</button> </div>
         <div id="scoreCount" class="scoreCount">Your Score: 0 </div>
         <div class="boy" style="display: none;"></div>
         <div class="guy"></div>
-        <div class="obstacle obstacleCroc"></div>
+        <div class="obstacle"></div>
         <footer>
             <div class="container">
-                &nbsp;Designed and built by dishant aarak | &copy; All rights reserved 
+                &nbsp;&copy;Designed and build by dishant aarak | All rights reserved 
             </div>
         </footer>
     </div>

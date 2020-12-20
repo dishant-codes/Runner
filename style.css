@@ -38,7 +38,12 @@ body{
     text-align: center;
     visibility: hidden;
 }
-
+.guide-1{
+    position: relative;
+    top: 45px;
+    font-size: 53px;
+    text-align: center;
+}
 .reloadBtn{
     position: absolute;
     left: 45vw;
@@ -70,12 +75,21 @@ body{
     padding: 10px;
 
 }
-#totalScore{
-    position: relative;
-    top: 45px;
-    font-size: 20px;
-    text-align: center;
-    visibility: hidden;
+.play-again{
+    background: rgb(113, 238, 167);
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.play-again:hover{
+   font-size: 17.5px;
+   box-shadow: 3px 4px #aaaaaa9c;
+}
+.play-again:focus{
+    outline: 0;
 }
 .obstacle{
     background-image: url(crocodile.png);
